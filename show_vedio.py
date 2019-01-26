@@ -58,14 +58,15 @@ def region_os_interest(image):
     masked_image=cv2.bitwise_and(image,mask)
     return masked_image
 
-image=cv2.imread('test_image.jpg')
-lane_image=numpy.copy(image)
-canny=canny(lane_image)
 
-cropped_image=region_os_interest(canny)
-lines=cv2.HoughLinesP(cropped_image,2,numpy.pi/180,100,numpy.array([]),minLineLength=40,maxLineGap=5)
-average_lines=average_slope_intercept(image,lines)
-linne_image=display_lines(lane_image,average_lines)
-combo_image=cv2.addWeighted(lane_image,0.8,linne_image,1,1)
-cv2.imshow("result",combo_image)
-cv2.waitKey(0)
+cap=cv2.VideoCapture('test2.mp4')
+while(cap.isOpened()):
+    _,frame=cap.read()
+    canny_image=canny(frame)
+    cropped_image=region_os_interest(canny_image)
+    lines=cv2.HoughLinesP(cropped_image,2,numpy.pi/180,100,numpy.array([]),minLineLength=40,maxLineGap=5)
+    average_lines=average_slope_intercept(frame,lines)
+    linne_image=display_lines(frame,average_lines)
+    combo_image=cv2.addWeighted(frame,0.8,linne_image,1,1)
+    cv2.imshow("result",combo_image)
+    cv2.waitKey(1)
