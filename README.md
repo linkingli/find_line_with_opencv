@@ -1,11 +1,11 @@
 # find_line_with_opencv
 
-###require
+###REQUIRE
 ```
 matplotlib,anaconda3,numpy,python3
 ```
 
-###RUNs
+###RUN
 ```
 python3 *.py
 ```
