@@ -2,5 +2,10 @@
 
 ###require
 ```
-matplotlib,anaconda3,numpy
+matplotlib,anaconda3,numpy,python3
+```
+
+###RUNs
+```
+python3 *.py
 ```
